@@ -1,0 +1,19 @@
+1) Change default gateway
+
+
+Sửa file /etc/sysconfig/network-scripts/ifcfg-eno8: Change GATEWAY về IP của server pv-network-01 là 172.16.242.4
+
+GATEWAY = 172.16.242.4
+
+
+Thêm file /etc/sysconfig/network-scripts/route-eno8` có nội dung như sau: 
+
+172.16.224.0/24 via 172.16.242.62 dev eno8 
+(Cho phép các kết nối MGT đi qua bằng server gateway của PV - 172.16.224.1)
+
+
+Restart lại service network: 
+
+# systemctl restart network
+
+Check lại đã ssh được từ server gateway 172.16.224.1 và ping thông internet là OK!
