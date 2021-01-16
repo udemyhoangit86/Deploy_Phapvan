@@ -1,0 +1,17 @@
+- hosts: all
+  user: ansible
+  become: True
+  tasks:
+    - name: Install  package
+    yum: name={{ item }} state=present
+    loop:
+     - yum-utils
+     - docker-ce
+     - telnet
+     - python-pip
+     - net-tools
+     - ipmitool
+     - wget
+     - bridge-utils
+     - tcpdump
+     - iperf3
